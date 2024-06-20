@@ -47,7 +47,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $allowedFilters = [
-           'id'         => Where::class,
+           'uuid'         => Where::class,
            'name'       => Like::class,
            'email'      => Like::class,
            'updated_at' => WhereDateStartEnd::class,
@@ -60,7 +60,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $allowedSorts = [
-        'id',
+        'uuid',
         'name',
         'email',
         'updated_at',

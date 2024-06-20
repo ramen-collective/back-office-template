@@ -1,0 +1,8 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS `action_events`;
+DROP TABLE IF EXISTS `nova_notifications`;
+DROP TABLE IF EXISTS `password_resets`;
+DROP TABLE IF EXISTS `users`;
+
+SET FOREIGN_KEY_CHECKS = 1;
