@@ -1,0 +1,39 @@
+name: Push to GCR GitHub Action
+on: [push]
+jobs:
+  set-vars:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set enviroment
+        shell: bash
+        run: |
+          echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
+          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
+      - name: Read enviroment
+        shell: bash
+        run: |
+          echo "BRANCH: ${{ env.branch }}"
+          echo "SHA_SHORT: ${{ env.sha_short }}"
+  build-and-push-to-gcr:
+    runs-on: ubuntu-latest
+    environment: demo
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:      
+      - uses: actions/checkout@v3
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/346121801501/locations/global/workloadIdentityPools/github/providers/ramen-collective
+          project_id: ${{ vars.PROJECT_ID }}
+      - uses: RafikFarhad/push-to-gcr-github-action@v5-rc1
+        with:
+          # gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }} # can be base64 encoded or plain text || not needed if you use google-github-actions/auth
+          registry: gcr.io
+          project_id: ${{ vars.PROJECT_ID }}
+          image_name: ${{ vars.IMAGE_NAME }}
+          image_tag: ${{ env.sha_short }}"
+          dockerfile: ./Dockerfile
