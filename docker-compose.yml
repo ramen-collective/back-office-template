@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8181:8181"
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - NOVA_USERNAME=diversification-tech@deezer.com
+      - NOVA_LICENSE_KEY=sEFTCijUaCiTRQE5wlTxwfBs7f86T9flHsAfsGoVeAypET5f0J
