@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Administration;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
@@ -20,11 +21,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'permissions',
     ];
 
     protected $casts = [
-        'permissions'          => 'array',
         'email_verified_at'    => 'datetime',
     ];
 
@@ -43,4 +42,12 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    /**
+     * Get the roles associated with the user.
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'user_role');
+    }
 }

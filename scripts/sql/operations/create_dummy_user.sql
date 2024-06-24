@@ -1,1 +1,0 @@
-INSERT INTO users (id, name, email, email_verified_at, password, remember_token, created_at, updated_at) VALUES (1, 'Test', 'test@test.com', null, '$2y$10$0zM3ZJQ0xJtbLCt56hkCse61COKa.R6SNU.Yqgk2S0aPV1tpXivmK', 'dVNXQGaD0etYegImANZ7kROCJbAZCwKpLoJ4tOGSlM4eNuiVBIP83WkAOqd9', '2022-05-20 14:51:09', '2022-05-20 14:51:09');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Orchid\Resources;
+namespace App\Orchid\Resources\Administration;
 
 use Orchid\Crud\Resource;
 use Orchid\Screen\TD;
@@ -12,7 +12,7 @@ class UserResource extends Resource
      *
      * @var string
      */
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\Administration\User::class;
 
     /**
      * Get the fields displayed by the resource.

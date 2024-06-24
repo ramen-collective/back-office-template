@@ -13,6 +13,9 @@ reload:
 	@cd $(SRC) && php artisan orchid:publish
 	@cd $(SRC) && php artisan view:clear
 
+update:
+	@cd $(SRC) && composer update orchid/platform --with-dependencies
+
 create-migration:
 	@cd $(SRC) && php artisan make:migration create_tasks_table --create=tasks
 
