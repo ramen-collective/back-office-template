@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40730f7fceda2371b502a1c00632a5b8",
+    "content-hash": "177fdbb6a395b0d667540fde8b9aa62a",
     "packages": [
         {
             "name": "brick/math",
@@ -2457,6 +2457,69 @@
                 }
             ],
             "time": "2024-03-30T23:56:41+00:00"
+        },
+        {
+            "name": "orchid/crud",
+            "version": "4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchidsoftware/crud.git",
+                "reference": "2dcd035be2894d242d18376837d59a2eb847c1da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchidsoftware/crud/zipball/2dcd035be2894d242d18376837d59a2eb847c1da",
+                "reference": "2dcd035be2894d242d18376837d59a2eb847c1da",
+                "shasum": ""
+            },
+            "require": {
+                "orchid/platform": "^14.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0",
+                "phpunit/phpunit": "^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Orchid\\Crud\\CrudServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Orchid\\Crud\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandr Chernyaev",
+                    "email": "bliz48rus@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Build CRUD apps in fewer lines of code for Laravel Orchid.",
+            "homepage": "https://github.com/orchid/crud",
+            "keywords": [
+                "crud",
+                "orchid"
+            ],
+            "support": {
+                "issues": "https://github.com/orchidsoftware/crud/issues",
+                "source": "https://github.com/orchidsoftware/crud/tree/4.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/orchid",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-04-20T02:16:51+00:00"
         },
         {
             "name": "orchid/platform",
