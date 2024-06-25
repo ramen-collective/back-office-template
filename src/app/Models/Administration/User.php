@@ -2,13 +2,11 @@
 
 namespace App\Models\Administration;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Orchid\Filters\Types\Like;
-use Orchid\Filters\Types\Where;
-use Orchid\Filters\Types\WhereDateStartEnd;
-use Orchid\Platform\Models\User as Authenticatable;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     protected $table = 'user';
     protected $primaryKey = 'uuid';
@@ -28,11 +26,6 @@ class User extends Authenticatable
     ];
 
     protected $allowedFilters = [
-           'uuid'         => Where::class,
-           'name'       => Like::class,
-           'email'      => Like::class,
-           'updated_at' => WhereDateStartEnd::class,
-           'created_at' => WhereDateStartEnd::class,
     ];
 
     protected $allowedSorts = [
@@ -43,11 +36,17 @@ class User extends Authenticatable
         'created_at',
     ];
 
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, '@gmail.com') && !$this->hasVerifiedEmail();
+    }
+
+
     /**
      * Get the roles associated with the user.
      */
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class, 'user_role');
-    }
+    // public function roles(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Role::class, 'user_role');
+    // }
 }

@@ -23,7 +23,22 @@ migrate:
 	@cd $(SRC) && php artisan migrate
 
 create-model:
-	@cd $(SRC) && php artisan make:model Task
+	@cd $(SRC) && php artisan make:model Model -m
 
-create-screen:
-	@cd $(SRC) && php artisan orchid:screen TaskScreen
+create-resource:
+	@cd $(SRC) && php artisan make:filament-resource
+
+create-user:
+	@cd $(SRC) && php artisan make:filament-user
+
+publish-config:
+	@cd $(SRC) && php artisan vendor:publish --tag=filament-config
+
+upgrade:
+	@cd $(SRC) && composer update && php artisan filament:upgrade
+
+create-page:
+	@cd $(SRC) && php artisan make:filament-page
+
+clear-route:
+	@cd $(SRC) && php artisan route:clear
